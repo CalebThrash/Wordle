@@ -19,28 +19,40 @@ import javafx.scene.Group;
 public class Main extends Application {
     String userGuess;
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primary) throws IOException {
 
-
-        //Start scene
-        Label StartSceneLabel = new Label("Start screen");
+        // ********Start scene************
+        //PlayButton.setOnAction((e) -> primaryStage.setScene(PlayScene));??????
+        // Creates Buttons for Start Screen
         Button PlayButton = new Button("Play");
-        //PlayButton.setOnAction((e) -> primaryStage.setScene(PlayScene));
         VBox layout1 = new VBox(1.0);
         layout1.setAlignment(Pos.CENTER);
+        Label StartSceneLabel = new Label("Start screen");
         layout1.getChildren().addAll(StartSceneLabel, PlayButton);
-        Scene StartScene = new Scene(layout1, 500, 750.0);
+        primary.setTitle("Start screen");
 
-        //Play scene
-        Color myColor= Color.rgb(128,0,0);
-        String myword="book";
+        // Creates Start scene
+        Scene StartScene = new Scene(layout1, 500, 750.0);
+        // ********Start scene************
+
+        // ********Play scene************
+        //Creating the word bank
+        //Color myColor= Color.rgb(128,0,0); <-never use????
+        String myword="book"; //<-- the word the user has to guess
         char[] myWordArray=myword.toCharArray();
+
         Font myfont=new Font(40);
-        String letterString="abcdefghijklmnopqrstuvwxyz";
-        char[] letterArray=letterString.toCharArray();
-        primaryStage.setTitle("Game Screen");
+
+        // For guessing the characters of the words
+        String lowercase_letter_String="abcdefghijklmnopqrstuvwxyz";
+        char[] lowercase_letterArray=lowercase_letter_String.toCharArray();
+        String uppercase_letter_String="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        char[] uppercase_letterArray=uppercase_letter_String.toCharArray();
+
+        //////Creates the blanks for word guess/////////
         GridPane gp=new GridPane();
         Label[] labels=new Label[16];
+
         for(int i=0;i<16;i++)
         {
             labels[i]=new Label("_");
@@ -56,33 +68,80 @@ public class Main extends Application {
             }
         gp.setVgap(15);
         gp.setHgap(40);
+        //////Creates the blanks for word guess/////////
+
+        //The Interface For player
         Label guessLabel=new Label("Guess:");
         guessLabel.setTextFill(Color.rgb(255,255,255));
-        TextField guessField=new TextField();
-        HBox hbox=new HBox();
-        Button enterButton=new Button("Enter");
+        guessLabel.setMaxHeight(2);
 
-        hbox.getChildren().addAll(guessLabel,guessField, enterButton);
+        TextField guessField=new TextField();
+
+        Button enterButton=new Button("Enter");
         enterButton.setTextFill(Color.rgb(255,255,255));
         enterButton.setStyle("-fx-background-color: #800000; ");
-        hbox.setSpacing(10);
-        Group root=new Group(gp, hbox);
+
+        HBox user_interface=new HBox();
+        user_interface.getChildren().addAll(guessLabel,guessField, enterButton);
+        user_interface.setSpacing(15);
+        user_interface.setLayoutY(715);
+
         gp.setLayoutX(150);
         gp.setLayoutY(0);
-        hbox.setLayoutY(715);
-        Scene PlayScene=new Scene(root, 500, 750,Color.rgb(128,0,0));
         gp.setAlignment(Pos.CENTER);
+        gp.setVgap(50);
+
+        Group root=new Group(gp, user_interface);
+
+        //Play Scene is created
+        Scene PlayScene=new Scene(root, 500, 750,Color.rgb(128,0,0));
+        // ********Play scene************
 
         //Button actions
-        PlayButton.setOnAction((e) -> primaryStage.setScene(PlayScene));
-        enterButton.setOnAction(e ->{
-
-            final String userWord1=guessField.getText();
-            userGuess=userWord1;
+        PlayButton.setOnAction((e) -> {
+            primary.setScene(PlayScene);
+            primary.setTitle("Game Screen");
         });
 
-        primaryStage.setScene(StartScene);
-        primaryStage.show();
+        // input user guess on the screen
+
+                enterButton.setOnAction(e ->{
+
+                    String userWord1=guessField.getText();
+                    userGuess=userWord1;
+
+                       /* for ( int k=0;k<4;k++) {
+                            int number = k;
+
+                            char[] userWord1array = userWord1.toCharArray();
+                            if (userWord1array[number] == myWordArray[number]) {
+                                //do somthing with color
+                            }
+                            else if (userWord1array[number+1] == myWordArray[number+1]){
+                                //do something with color
+                            }
+                            else if (userWord1array[number+2] == myWordArray[number+2]){
+                                //do something with color
+                            }
+                            else if (userWord1array[number+3] == myWordArray[number+3]){
+                                //do something with color
+                            }
+
+                            String converter = String.valueOf(userWord1array[number]);
+                            labels[number].setText(converter);
+                            converter = String.valueOf(userWord1array[number+1]);
+                            labels[number+4].setText(converter);
+                            converter = String.valueOf(userWord1array[number+2]);
+                            labels[number+8].setText(converter);
+                            converter = String.valueOf(userWord1array[number+3]);
+                            labels[number+12].setText(converter);
+                        }*/
+
+                });
+
+
+        primary.setScene(StartScene);
+        primary.show();
 
     }
 
