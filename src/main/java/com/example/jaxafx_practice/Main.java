@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-import javafx.scene.paint.Color;
+import javafx.scene.paint.*;
 import javafx.scene.text.Font;
 import javafx.scene.control.*;
 import javafx.scene.Group;
@@ -25,14 +25,26 @@ public class Main extends Application {
         //PlayButton.setOnAction((e) -> primaryStage.setScene(PlayScene));??????
         // Creates Buttons for Start Screen
         Button PlayButton = new Button("Play");
-        VBox layout1 = new VBox(1.0);
+        PlayButton.setMinWidth(55);
+        PlayButton.setMinHeight(30);
+        VBox layout1 = new VBox(250.0);
         layout1.setAlignment(Pos.CENTER);
-        Label StartSceneLabel = new Label("Start screen");
+        Label StartSceneLabel = new Label("Wordle");
+        StartSceneLabel.setMinWidth(55);
+        StartSceneLabel.setMinHeight(30);
+        StartSceneLabel.setAlignment(Pos.CENTER);
+
+        StartSceneLabel.setStyle("-fx-background-color: #FFFFFF;");
         layout1.getChildren().addAll(StartSceneLabel, PlayButton);
         primary.setTitle("Start screen");
+        layout1.setStyle("-fx-background-color:#800000");
+        HBox user_interface=new HBox();
 
         // Creates Start scene
         Scene StartScene = new Scene(layout1, 500, 750.0);
+
+
+
         // ********Start scene************
 
         // ********Play scene************
@@ -81,20 +93,20 @@ public class Main extends Application {
         enterButton.setTextFill(Color.rgb(255,255,255));
         enterButton.setStyle("-fx-background-color: #800000; ");
 
-        HBox user_interface=new HBox();
-        user_interface.getChildren().addAll(guessLabel,guessField, enterButton);
-        user_interface.setSpacing(15);
-        user_interface.setLayoutY(715);
+        HBox user_interface_gs=new HBox();
+        user_interface_gs.getChildren().addAll(guessLabel,guessField, enterButton);
+        user_interface_gs.setSpacing(15);
+        user_interface_gs.setLayoutY(715);
 
         gp.setLayoutX(150);
         gp.setLayoutY(0);
         gp.setAlignment(Pos.CENTER);
         gp.setVgap(50);
 
-        Group root=new Group(gp, user_interface);
+        Group root_ss=new Group(gp, user_interface_gs);
 
         //Play Scene is created
-        Scene PlayScene=new Scene(root, 500, 750,Color.rgb(128,0,0));
+        Scene PlayScene=new Scene(root_ss, 500, 750,Color.rgb(128,0,0));
         // ********Play scene************
 
         //Button actions
