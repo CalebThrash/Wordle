@@ -117,10 +117,10 @@ public class Main extends Application {
 
         // input user guess on the screen
 
-                enterButton.setOnAction(e ->{
+        enterButton.setOnAction(e ->{
 
-                    String userWord1=guessField.getText();
-                    userGuess=userWord1;
+            String userWord1=guessField.getText();
+            userGuess=userWord1;
 
                        /* for ( int k=0;k<4;k++) {
                             int number = k;
@@ -149,7 +149,7 @@ public class Main extends Application {
                             labels[number+12].setText(converter);
                         }*/
 
-                });
+        });
 
 
         primary.setScene(StartScene);
@@ -159,6 +159,6 @@ public class Main extends Application {
 
 
     public static void main() {
-      launch();
-      }
+        launch();
+    }
 }
