@@ -49,6 +49,10 @@ public class Main extends Application {
         Playscene playscene = new Playscene();
         //????????Play scene?????????????
 
+        //Create the word to be guessed
+        Choose_word Choose_word = new Choose_word();
+        String wordToGuess = Choose_word.getWord();
+
 
         //Button actions
         PlayButton.setOnAction((e) -> {
@@ -59,7 +63,7 @@ public class Main extends Application {
         playscene.enterButton.setOnAction((e) -> {
             String userWord=playscene.guessField.getText();
             if(userWord.length()==4)
-                {playscene.displayWord(userWord.toLowerCase(),"hats");
+                {playscene.displayWord(userWord.toLowerCase(),wordToGuess);
                 playscene.count+=1;}
         });
         primary.setScene(StartScene);
