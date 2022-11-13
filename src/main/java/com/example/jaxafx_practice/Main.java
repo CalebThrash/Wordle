@@ -7,19 +7,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+<<<<<<< Updated upstream
 import java.io.IOException;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.control.*;
 import javafx.scene.Group;
+=======
+
+import static com.example.jaxafx_practice.Resultscene.RestartButton;
+//import com.example.jaxafx_practice.Playscene.playscence;
+>>>>>>> Stashed changes
 
 
 public class Main extends Application {
     String userGuess;
     @Override
-    public void start(Stage primary) throws IOException {
+    public void start(Stage primary) {
 
         // ********Start scene************
         //PlayButton.setOnAction((e) -> primaryStage.setScene(PlayScene));??????
@@ -30,6 +35,10 @@ public class Main extends Application {
         Label StartSceneLabel = new Label("Start screen");
         layout1.getChildren().addAll(StartSceneLabel, PlayButton);
         primary.setTitle("Start screen");
+<<<<<<< Updated upstream
+=======
+        layout1.setStyle("-fx-background-color:#800000");
+>>>>>>> Stashed changes
 
         // Creates Start scene
         Scene StartScene = new Scene(layout1, 500, 750.0);
@@ -86,12 +95,18 @@ public class Main extends Application {
         user_interface.setSpacing(15);
         user_interface.setLayoutY(715);
 
+<<<<<<< Updated upstream
         gp.setLayoutX(150);
         gp.setLayoutY(0);
         gp.setAlignment(Pos.CENTER);
         gp.setVgap(50);
 
         Group root=new Group(gp, user_interface);
+=======
+        //Create the word to be guessed
+        Choose_word Choose_word = new Choose_word();
+        String wordToGuess = Choose_word.getWord();
+>>>>>>> Stashed changes
 
         //Play Scene is created
         Scene PlayScene=new Scene(root, 500, 750,Color.rgb(128,0,0));
@@ -99,8 +114,41 @@ public class Main extends Application {
 
         //Button actions
         PlayButton.setOnAction((e) -> {
+<<<<<<< Updated upstream
             primary.setScene(PlayScene);
             primary.setTitle("Game Screen");
+=======
+            primary.setScene(Playscene.playscence());
+            primary.setTitle("Game Screen");});
+        primary.setScene(StartScene);
+        primary.show();
+        Playscene.enterButton.setOnAction((e) -> {
+            String userWord= Playscene.guessField.getText();
+            if(userWord.length()==4)
+                {
+                    Playscene.displayWord(userWord.toLowerCase(),wordToGuess);
+                Playscene.count +=1;}
+            if (Playscene.count ==4){
+                primary.setScene(Resultscene.loser(wordToGuess));
+            }
+        });
+
+        //Button actions2
+        RestartButton.setOnAction((e) -> {
+            primary.setScene(Playscene.playscence());
+            primary.setTitle("Game Screen");});
+        primary.setScene(StartScene);
+        primary.show();
+        Playscene.enterButton.setOnAction((e) -> {
+            String userWord= Playscene.guessField.getText();
+            if(userWord.length()==4)
+            {
+                Playscene.displayWord(userWord.toLowerCase(),wordToGuess);
+                Playscene.count +=1;}
+            if (Playscene.count ==5){
+                primary.setScene(Resultscene.loser(wordToGuess));
+            }
+>>>>>>> Stashed changes
         });
 
         // input user guess on the screen
@@ -142,6 +190,7 @@ public class Main extends Application {
 
         primary.setScene(StartScene);
         primary.show();
+<<<<<<< Updated upstream
 
     }
 
@@ -149,4 +198,7 @@ public class Main extends Application {
     public static void main() {
       launch();
       }
+=======
+    }
+>>>>>>> Stashed changes
 }
