@@ -26,7 +26,7 @@ public class Resultscene {
         Game_Over.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 50));
         Game_Over.setTranslateY(370);
 
-        Label correct_word=new Label("The Correct Word Is:");
+        Label correct_word=new Label("The Correct Word Was:");
         correct_word.setFont(Font.font("Times New Roman", FontWeight.NORMAL, 40));
         correct_word.setTranslateY(250);
 
