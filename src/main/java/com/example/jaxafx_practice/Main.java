@@ -42,7 +42,7 @@ public class Main extends Application {
         StartSceneLabel.setAlignment(Pos.CENTER);
         VBox layout2 = new VBox(25.0);
         layout2.setAlignment(Pos.BOTTOM_CENTER);
-        layout2.getChildren().addAll(RulesScene, RuleButton);
+       // layout2.getChildren().addAll(RulesScene, RuleButton);
         layout2.setStyle("-fx-background-color: #FFFFFF;");
 
 
@@ -60,15 +60,15 @@ public class Main extends Application {
         // ********Start scene************
 
 
-    
+
         Playscene playscene = new Playscene();
-       
+
 
         //Create the word to be guessed
         Choose_word Choose_word = new Choose_word();
         AtomicReference<String> wordToGuess = new AtomicReference<>(Choose_word.getWord());
 
-        String wordToGuess = Choose_word.getWord();
+
 
 
 
@@ -117,8 +117,5 @@ public class Main extends Application {
 
     public static void main() {
         launch();
-    }
+    }}
 
-    public static void main() {
-        launch();
-    }
