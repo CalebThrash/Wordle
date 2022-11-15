@@ -8,36 +8,51 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
+<<<<<<< Updated upstream
 import java.util.concurrent.atomic.AtomicReference;
 
 import static com.example.jaxafx_practice.Resultscene.RestartButton;
+=======
+>>>>>>> Stashed changes
 //import com.example.jaxafx_practice.Playscene.playscence;
 
 
 public class Main extends Application {
     Scene StartScene;
+<<<<<<< Updated upstream
 
+=======
+    Scene RulesScene;
+>>>>>>> Stashed changes
     @Override
     public void start(Stage primary) throws IOException {
 
         // ********Start scene************
-
         Button PlayButton = new Button("Play");
         PlayButton.setMinWidth(55);
         PlayButton.setMinHeight(30);
 
-        VBox layout1 = new VBox(250.0);
+        Button RuleButton = new Button("rules");
+        RuleButton.setMinWidth(55);
+        RuleButton.setMinHeight(30);
+
+        VBox layout1 = new VBox(25.0);
         layout1.setAlignment(Pos.CENTER);
         Label StartSceneLabel = new Label("Wordle");
         StartSceneLabel.setMinWidth(55);
         StartSceneLabel.setMinHeight(30);
         StartSceneLabel.setAlignment(Pos.CENTER);
+        VBox layout2 = new VBox(25.0);
+        layout2.setAlignment(Pos.BOTTOM_CENTER);
+        layout2.getChildren().addAll(RulesScene, RuleButton);
+        layout2.setStyle("-fx-background-color: #FFFFFF;");
 
         StartSceneLabel.setStyle("-fx-background-color: #FFFFFF;");
         layout1.getChildren().addAll(StartSceneLabel, PlayButton);
         primary.setTitle("Start screen");
         layout1.setStyle("-fx-background-color:#800000");
         HBox user_interface = new HBox();
+
 
         // Creates Start scene
         StartScene = new Scene(layout1, 500, 750.0);
@@ -99,4 +114,11 @@ public class Main extends Application {
     public static void main() {
         launch();
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+
+
+
+>>>>>>> Stashed changes
