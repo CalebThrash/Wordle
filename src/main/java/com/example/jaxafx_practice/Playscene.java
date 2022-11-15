@@ -162,6 +162,7 @@ public class Playscene {
                         labels[i+12].setTextFill(Color.rgb(255, 255, 0));
         }
         }
+
 };
 
 
