@@ -74,13 +74,16 @@ public class Main extends Application {
         Scene StartScene = new Scene(layout1, 500, 750.0);
         Scene RuleScene = new Scene(layout2,500, 750.0);
 
+        Playscene playscene=new Playscene();
+        Choose_word wordToGuess=new Choose_word();
+
 
         // ********Start scene************
 
         // ********Play scene************
         //Creating the word bank
         //Color myColor= Color.rgb(128,0,0); <-never use????
-        String myword="book"; //<-- the word the user has to guess
+        /*String myword="book"; //<-- the word the user has to guess
         char[] myWordArray=myword.toCharArray();
 
         Font myfont=new Font(40);
@@ -143,9 +146,11 @@ public class Main extends Application {
         Scene PlayScene=new Scene(root_ss, 500, 750,Color.rgb(56,29,82));
         // ********Play scene************
 
+         */
+
         //Button actions
         PlayButton.setOnAction((e) -> {
-            primary.setScene(PlayScene);
+            primary.setScene(playscene.playscence());
             primary.setTitle("Game Screen");
         });
 
@@ -165,37 +170,19 @@ public class Main extends Application {
         });
         // input user guess on the screen
 
-        enterButton.setOnAction(e ->{
+        playscene.enterButton.setOnAction(e ->{
 
-            String userWord1=guessField.getText();
+            String userWord1=playscene.guessField.getText();
             userGuess=userWord1;
+            if(userWord1.length()==4) {
+            playscene.displayWord(userWord1.toLowerCase(),wordToGuess.getWord());
+            playscene.count +=1;
+            }
+            if (playscene.count==4){
+                primary.setScene((Resultscene.loser(wordToGuess.getWord())));
+            }
 
-                       /* for ( int k=0;k<4;k++) {
-                            int number = k;
 
-                            char[] userWord1array = userWord1.toCharArray();
-                            if (userWord1array[number] == myWordArray[number]) {
-                                //do somthing with color
-                            }
-                            else if (userWord1array[number+1] == myWordArray[number+1]){
-                                //do something with color
-                            }
-                            else if (userWord1array[number+2] == myWordArray[number+2]){
-                                //do something with color
-                            }
-                            else if (userWord1array[number+3] == myWordArray[number+3]){
-                                //do something with color
-                            }
-
-                            String converter = String.valueOf(userWord1array[number]);
-                            labels[number].setText(converter);
-                            converter = String.valueOf(userWord1array[number+1]);
-                            labels[number+4].setText(converter);
-                            converter = String.valueOf(userWord1array[number+2]);
-                            labels[number+8].setText(converter);
-                            converter = String.valueOf(userWord1array[number+3]);
-                            labels[number+12].setText(converter);
-                        }*/
 
         });
 

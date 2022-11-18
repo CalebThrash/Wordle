@@ -69,7 +69,7 @@ public class Playscene {
         Group root_ss = new Group(gp, user_interface_gs);
 
         //Play Scene is created
-        Scene PlayScene = new Scene(root_ss, 500, 750, Color.rgb(128, 0, 0));
+        Scene PlayScene = new Scene(root_ss, 500, 750, Color.rgb(56,29,82));
 
 
         // ********Play scene************
