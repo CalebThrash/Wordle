@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import javafx.scene.Group;
 import javafx.scene.text.TextAlignment;
 import static com.example.jaxafx_practice.Resultscene.RestartButton;
+import static javafx.scene.control.MenuButton.*;
 
 
 public class Main extends Application {
@@ -38,12 +39,12 @@ public class Main extends Application {
         VBox layout2 = new VBox(25.0);
         layout1.setAlignment(Pos.CENTER);
         Label StartSceneLabel = new Label("Wordle");
+        StartSceneLabel.setTextFill(Color.web("FFD700"));
 
 
         StartSceneLabel.setMinWidth(100);
         StartSceneLabel.setMinHeight(60);
         StartSceneLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 28));
-        StartSceneLabel.setStyle("-fx-background-color: #381d52;");
         StartSceneLabel.setTextFill(Color.BEIGE);
         StartSceneLabel.setAlignment(Pos.CENTER);
 
@@ -86,6 +87,8 @@ public class Main extends Application {
 
         // ********Play scene************
         PlayButton.setOnAction((e) -> {
+            Playscene.count = 0;
+            wordToGuess.set(Choose_word.getWord());
             primary.setScene(playscene.playscence());
             primary.setTitle("Game Screen");
         });
@@ -112,10 +115,10 @@ public class Main extends Application {
             primary.setTitle("Game Screen");
 
         });
-        /*MenuButton.setOnAction((e) -> {
+        Resultscene.MenuButton.setOnAction((e) -> {
             primary.setScene(StartScene);
             primary.setTitle("Game Screen");
-        });*/
+        });
 
 
         // input user guess on the screen
@@ -128,8 +131,12 @@ public class Main extends Application {
             playscene.displayWord(userWord1.toLowerCase(),wordToGuess.get());
             playscene.count +=1;
             }
-            if (playscene.count==4){
-                primary.setScene((Resultscene.loser(wordToGuess.get())));
+            System.out.println(wordToGuess.get());
+            if (userGuess.equals(wordToGuess.get())){
+               primary.setScene(Resultscene.winner(wordToGuess.get()));
+            }
+            else if (playscene.count==4){
+                primary.setScene(Resultscene.loser(wordToGuess.get()));
             }
 
 
