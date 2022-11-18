@@ -40,6 +40,7 @@ public class Resultscene {
         layout1.getChildren().addAll(Game_Over, correct_word,guessword, RestartButton, MenuButton);
         layout1.setStyle("-fx-background-color:#ADD8E6");
 
+
         // Creates Start scene
 
 

@@ -19,6 +19,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.control.*;
 import javafx.scene.Group;
 import javafx.scene.text.TextAlignment;
+import static com.example.jaxafx_practice.Resultscene.RestartButton;
 
 
 public class Main extends Application {
@@ -103,6 +104,20 @@ public class Main extends Application {
             primary.setScene(StartScene);
             primary.setTitle("Game Screen");
         });
+
+        RestartButton.setOnAction((e) -> {
+            Playscene.count = 0;
+            wordToGuess.set(Choose_word.getWord());
+            primary.setScene(playscene.playscence());
+            primary.setTitle("Game Screen");
+
+        });
+        /*MenuButton.setOnAction((e) -> {
+            primary.setScene(StartScene);
+            primary.setTitle("Game Screen");
+        });*/
+
+
         // input user guess on the screen
 
         playscene.enterButton.setOnAction(e ->{
